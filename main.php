@@ -6,6 +6,7 @@
 	$pathIs = realpath(dirname(__FILE__));
 	$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
 	$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
+	$connected = 0;
 	include $pathIs."/config.php";
 
 	$sock = fsockopen($server, $port, $errno, $errstr, 30);
@@ -38,7 +39,16 @@
 				foreach($coms as $file) {
 					include $file;
 				}
-				echo $data;
+				$chatO = explode(".tmi.twitch.tv PRIVMSG ".$channel." :", $data);
+				$chatU = explode("@", $chatO[0])[1];
+				$chatM = $chatO[1];
+				if ($connected >= 10) {
+					echo $chatU.": ".$chatM;
+				} else {
+					echo $data;
+					$connected++;
+				}
+
 				flush();
 
 				// Separate all data
