@@ -38,7 +38,8 @@
 				$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 				
 				// Commands
-				$dataE = nl2br($data);
+				$dataE = "<START>".nl2br($data);
+				$whoSend = explode("@", explode(".tmi.twitch.tv PRIVMSG ".$channel." :", $dataE)[0])[1];
 				foreach($coms as $file) {
 					include $file;
 				}

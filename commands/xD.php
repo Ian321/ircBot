@@ -9,12 +9,11 @@
 		echo "=> !xD (".$C_xd_n.")\n";
 		if ($C_xd_a && $C_xd_n >= 15) {
 			fwrite($sock, "PRIVMSG ".$channel." :pajaSWA\n");
+			$C_xd_t = time();
 			$C_xd_a = false;
-			$C_xd_t = time();
-		} elseif ($C_xd_n >= 15) {
-			fwrite($sock, "PRIVMSG ".$channel." :pajaSWA &#160;\n");
+		} elseif($C_xd_n >= 15) {
+			fwrite($sock, "PRIVMSG ".$channel." :pajaSWA&#65279;\n");
 			$C_xd_a = true;
-			$C_xd_t = time();
 		}
 	}
 ?>
