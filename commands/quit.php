@@ -1,6 +1,5 @@
 <?php
-	$adminQuit = $admin."@".$admin.".tmi.twitch.tv PRIVMSG ".$channel.' :!quit';
-	if (strpos($data, $adminQuit) !== false) {
+	if (checkC("admin", "!quit")) {
 		echo "=> Quitting\n";
 		if ($showS) {
 			fwrite($sock, "PRIVMSG ".$channel." :Shutting down pajaHop\n");

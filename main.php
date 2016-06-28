@@ -7,6 +7,7 @@
 	$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
 	$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 	include $pathIs."/config.php";
+	include $pathIs."/lib.php";
 
 	$sock = fsockopen($server, $port, $errno, $errstr, 30);
 	if (!$sock) {
@@ -31,15 +32,18 @@
 		while(true) {
 			$timeoutA = 0;
 			while($data = fgets($sock, 128)) {
-				// Update mod list
+				
+				// Update lists
 				$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
+				$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 				
 				// Commands
+				$dataE = nl2br($data);
 				foreach($coms as $file) {
 					include $file;
 				}
-				echo $data;
 
+				echo $data;
 				flush();
 
 				// Separate all data

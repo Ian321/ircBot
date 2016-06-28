@@ -6,7 +6,7 @@
 	$C_ping_n = time() - $C_ping_t;
 	
 	$uptime = time() - $startTime;
-	if (strpos($data, $channel.' :!ping') !== false) {
+	if (checkC("all", "!ping")) {
 		echo "==> !ping (".$C_ping_n.")\n";
 		if ($C_ping_a && $C_ping_n >= 15) {
 			fwrite($sock, "PRIVMSG ".$channel." :Uptime is seconds: ".$uptime."\n");
