@@ -19,7 +19,7 @@
 			$newCT .='$C_'.$sendVar1.'_t = time();'.PHP_EOL;
 			$newCT .='$C_'.$sendVar1.'_a = false;'.PHP_EOL;
 			$newCT .='} elseif($C_'.$sendVar1.'_n >= 15) {'.PHP_EOL;
-			$newCT .='fwrite($sock, "PRIVMSG ".$channel." :'.$sendVar2.'&#65279;\n");'.PHP_EOL;
+			$newCT .='fwrite($sock, "PRIVMSG ".$channel." :'.$sendVar2.' &#65279;\n");'.PHP_EOL;
 			$newCT .='$C_'.$sendVar1.'_a = true;'.PHP_EOL;
 			$newCT .='}'.PHP_EOL;
 			$newCT .='}'.PHP_EOL;
