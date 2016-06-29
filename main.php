@@ -35,11 +35,13 @@
 				
 				// Update lists
 				$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
+				$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
 				$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 				
 				// Commands
 				$dataE = "<START>".nl2br($data);
 				$whoSend = explode("@", explode(".tmi.twitch.tv PRIVMSG ".$channel." :", $dataE)[0])[1];
+				include $pathIs."/timeout.php";
 				foreach($coms as $file) {
 					include $file;
 				}

@@ -1,6 +1,7 @@
 <?php
 	if (checkC("admin", "!-mod")) {
 		$sendVar1 = explode("<br", explode("PRIVMSG ".$channel." :!-mod ", $dataE)[1])[0];
+		$sendVar1 = strtolower($sendVar1);
 		echo "=> Removed mod: ".$sendVar1."\n";
 		if(($key = array_search($sendVar1, $mods)) !== false) {
 			unset($mods[$key]);
