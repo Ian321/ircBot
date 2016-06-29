@@ -32,7 +32,11 @@
 					fwrite($sock, "PRIVMSG ".$channel." :&#65279;".$varsIN[1]." is already dead.\n");
 				}
 			} else {
-				fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", dead people can't kill others OMGScoots\n");
+				if ($varsIN[1] == $MSfrom) {
+					fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you are already dead FeelsBadMan\n");
+				} else {
+					fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", dead people can't kill others OMGScoots\n");
+				}
 			}
 		}
 	}
