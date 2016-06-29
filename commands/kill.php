@@ -35,7 +35,7 @@
 					}
 					$C_kill_t = time();
 				} else {
-					fwrite($sock, "PRIVMSG ".$channel." :&#65279;".$varsIN[1]." is already dead.\n");
+					fwrite($sock, "PRIVMSG ".$channel." :&#65279; ".$varsIN[1]." is already dead.\n");
 				}
 			} else {
 				if ($varsIN[1] == $MSfrom) {
