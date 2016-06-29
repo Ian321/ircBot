@@ -10,6 +10,12 @@
 			echo "=> List of dead people:\n";
 			echo var_dump($killed);
 			fwrite($sock, "PRIVMSG ".$channel." :.w ".$MSfrom." Dead people: ".implode(", ", $killed)."\n");
+		} elseif ($varsIN[1] == "clear" && checkC("admin", "!kill")) {
+			$killed = array();
+			echo "=> !kill -> clear \n";
+			fwrite($sock, "PRIVMSG ".$channel." :Cleared the list.\n");
+		} elseif ($varsIN[1] == "clear") {
+			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't clear the list OMGScoots\n");
 		} elseif (strpos($varsIN[1], '.') !== false) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't kill links OMGScoots\n");
 		} elseif (strlen($varsIN[1]) > 25) {
