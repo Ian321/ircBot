@@ -18,7 +18,11 @@
 			echo "=> !kill ".$MSfrom." -> ".$varsIN[1]." (".$C_kill_n.")\n";
 			if (!in_array(strtolower($MSfrom), $killed)) {
 				if ($C_xd_n >= 15 && !in_array(strtolower($varsIN[1]), $killed)) {
-					fwrite($sock, "PRIVMSG ".$channel." :pajaDank ︻╦╤─ ".$varsIN[1]."\n");
+					if ($varsIN[1] == $MSfrom) {
+						fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", killed himself FeelsBadMan\n");
+					} else {
+						fwrite($sock, "PRIVMSG ".$channel." :pajaDank ︻╦╤─ ".$varsIN[1]."\n");
+					}
 					array_push($killed, strtolower($varsIN[1]));
 					if ($isMod) {
 						fwrite($sock, "PRIVMSG ".$channel." :.timeout ".$varsIN[1]." 3\n");
