@@ -5,7 +5,7 @@
 	}
 
 	$C_xd_n = time() - $C_xd_t;
-	if (checkC("all", "!xD")) {
+	if (checkC("all", "!xD") || checkC("all", "!xd")) {
 		echo "=> !xD (".$C_xd_n.")\n";
 		if ($C_xd_a && $C_xd_n >= 15) {
 			fwrite($sock, "PRIVMSG ".$channel." :pajaSWA\n");
