@@ -1,10 +1,25 @@
 <?php
+	/*
+		List of usable variables:
+			$pathIs 	= location of main.php
+			$mods 		= array of mods
+			$blacklist	= array of blacklisted lines
+			$coms		= array of commands
+			$admin		= string of admin
+			$showS		= show status y/nSuccessful
+			$isMod		= is the bot mods
+			$channel	= where the bot should be
+			
+			$MSfrom		= send from
+			$varsIN		= array message
+	*/
 	error_reporting(E_ALL & ~E_NOTICE);
 	set_time_limit(0);
 	ini_set('display_errors', 'on');
 
 	$pathIs = realpath(dirname(__FILE__));
 	$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
+	$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
 	$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 	include $pathIs."/config.php";
 	include $pathIs."/lib.php";
@@ -40,8 +55,9 @@
 				
 				// Commands
 				$dataE = "<START>".nl2br($data);
-				$whoSend = explode("@", explode(".tmi.twitch.tv PRIVMSG ".$channel." :", $dataE)[0])[1];
-				include $pathIs."/timeout.php";
+				$genVars = explode(".tmi.twitch.tv PRIVMSG ".$channel." :", $dataE);
+				$MSfrom = explode("@", explode("<br />", $genVars[0])[0])[1];
+				$varsIN = explode(" ", explode($MSfrom.".tmi.twitch.tv PRIVMSG ".$channel." :", explode("<br />", $genVars[1])[0])[0]);
 				foreach($coms as $file) {
 					include $file;
 				}

@@ -6,7 +6,7 @@
 		global $dataE;
 		global $admin;
 		global $mods;
-		global $whoSend;
+		global $MSfrom;
 		global $channel;
 		switch($who) {
 			case "all":

@@ -1,14 +1,13 @@
 <?php
 	if (checkC("admin", "!-mod")) {
-		$sendVar1 = explode("<br", explode("PRIVMSG ".$channel." :!-mod ", $dataE)[1])[0];
-		$sendVar1 = strtolower($sendVar1);
-		echo "=> Removed mod: ".$sendVar1."\n";
-		if(($key = array_search($sendVar1, $mods)) !== false) {
+		$varsIN[1] = strtolower($varsIN[1]);
+		echo "=> Removed mod: ".$varsIN[1]."\n";
+		if(($key = array_search($varsIN[1], $mods)) !== false) {
 			unset($mods[$key]);
 		}
 		file_put_contents($pathIs.'/mods.txt', implode("\n", $mods)."\n");
 		if ($showS) {
-			fwrite($sock, "PRIVMSG ".$channel." :Removed ".$sendVar1." to the list of mods.\n");
+			fwrite($sock, "PRIVMSG ".$channel." :Removed ".$varsIN[1]." to the list of mods.\n");
 		}
 	}
 ?>
