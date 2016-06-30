@@ -6,6 +6,7 @@
 		global $dataE;
 		global $admin;
 		global $mods;
+		global $host;
 		global $MSfrom;
 		global $channel;
 		switch($who) {
@@ -14,11 +15,14 @@
 					return true;
 				}
 			case "mods":
-				if (strpos($dataE, $channel.' :'.$command.'<br />') !== false || strpos($dataE, $channel.' :'.$command.' ') !== false) {
-					return true;
+				foreach ($mods as $mod) {
+					if (strpos($dataE, $mod."@".$mod.".".$host." PRIVMSG ".$channel.' :'.$command.'<br />') !== false || strpos($dataE, $mod."@".$mod.".".$host." PRIVMSG ".$channel.' :'.$command.' ') !== false) {
+						return true;
+					}
 				}
+
 			case "admin":
-				if (strpos($dataE, $admin."@".$admin.".tmi.twitch.tv PRIVMSG ".$channel.' :'.$command.'<br />') !== false || strpos($dataE, $admin."@".$admin.".tmi.twitch.tv PRIVMSG ".$channel.' :'.$command.' ') !== false) {
+				if (strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$command.'<br />') !== false || strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$command.' ') !== false) {
 					return true;
 				}
 			case "none":

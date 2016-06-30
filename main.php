@@ -55,9 +55,9 @@
 				
 				// Commands
 				$dataE = "<START>".nl2br($data);
-				$genVars = explode(".tmi.twitch.tv PRIVMSG ".$channel." :", $dataE);
+				$genVars = explode(".".$host." PRIVMSG ".$channel." :", $dataE);
 				$MSfrom = explode("@", explode("<br />", $genVars[0])[0])[1];
-				$varsIN = explode(" ", explode($MSfrom.".tmi.twitch.tv PRIVMSG ".$channel." :", explode("<br />", $genVars[1])[0])[0]);
+				$varsIN = explode(" ", explode($MSfrom.".".$host." PRIVMSG ".$channel." :", explode("<br />", $genVars[1])[0])[0]);
 				foreach($coms as $file) {
 					include $file;
 				}
