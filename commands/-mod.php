@@ -7,7 +7,7 @@
 		}
 		file_put_contents($pathIs.'/mods.txt', implode("\n", $mods)."\n");
 		if ($showS) {
-			fwrite($sock, "PRIVMSG ".$channel." :Removed ".$varsIN[1]." to the list of mods.\n");
+			fwrite($sock, "PRIVMSG ".$channel." :Removed ".$varsIN[1]." from the list of mods.\n");
 		}
 	}
 ?>
