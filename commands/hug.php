@@ -13,6 +13,8 @@
 		} elseif ($varsIN[1] == $MSfrom) {
 			echo "=> !hug ".$MSfrom." -> ".$varsIN[1]."\n";
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom." hugs himself FeelsBadMan\n");
+			$LastHug = $MSfrom."-".$varsIN[1];
+			$C_hug_t = time();
 		} else {
 			echo "=> !hug ".$MSfrom." -> ".$varsIN[1]."\n";
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom." hugs ".$varsIN[1]." <3 VoHiYo\n");
