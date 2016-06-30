@@ -10,6 +10,9 @@
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't hug links OMGScoots\n");
 		} elseif (strlen($varsIN[1]) > 25) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", this string is too long OMGScoots\n");
+		} elseif ($varsIN[1] == $MSfrom) {
+			echo "=> !hug ".$MSfrom." -> ".$varsIN[1]."\n";
+			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom." hugs himself FeelsBadMan\n");
 		} else {
 			echo "=> !hug ".$MSfrom." -> ".$varsIN[1]."\n";
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom." hugs ".$varsIN[1]." <3 VoHiYo\n");
