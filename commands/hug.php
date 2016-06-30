@@ -1,5 +1,5 @@
 <?php
-	if (!isset($C_kill_t)) {
+	if (!isset($C_hug_t)) {
 		$C_hug_t = 0;
 		$LastHug = null;
 	}
