@@ -1,1 +1,1 @@
-# twitchBotPHP
+# twitchBot
