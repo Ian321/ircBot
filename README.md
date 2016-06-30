@@ -1,1 +1,1 @@
-# twitchBot
+# ircBot
