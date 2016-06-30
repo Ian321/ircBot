@@ -2,10 +2,11 @@
 	if (!isset($C_kill_t)) {
 		$C_kill_t = 0;
 		$killed = array();
+		$lastKill = null;
 	}
 	
 	$C_kill_n = time() - $C_kill_t;
-	if (checkC("all", "!kill")) {
+	if (checkC("all", "!kill") && $lastKill != $MSfrom."-".$varsIN[1]) {
 		if ($varsIN[1] == "list") {
 			echo "=> List of dead people:\n";
 			echo var_dump($killed);
@@ -45,6 +46,7 @@
 				}
 			}
 		}
+		$lastKill = $MSfrom."-".$varsIN[1];
 	}
 	if (checkC("all", "!kys")) {
 		if (!in_array(strtolower($MSfrom), $killed)) {
