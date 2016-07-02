@@ -14,7 +14,9 @@
 		} elseif ($varsIN[1] == "clear" && checkC("admin", "!kill")) {
 			$killed = array();
 			echo "=> !kill -> clear \n";
-			fwrite($sock, "PRIVMSG ".$channel." :Cleared the list.\n");
+			if ($showS) {
+				fwrite($sock, "PRIVMSG ".$channel." :Cleared the list.\n");
+			}
 		} elseif ($varsIN[1] == "clear") {
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't clear the list OMGScoots\n");
 		} elseif (strpos($varsIN[1], '.') !== false) {
