@@ -18,7 +18,7 @@
 		$uptimeA .= ", ";
 	} elseif ($hours >= 1 && ($mins >= 1 || $secs >= 1)) {
 		$uptimeA .= " and ";
-	} else {
+	} elseif ($hours >= 1) {
 		$uptimeA .= ".";
 	}
 	if ($mins >= 2) {
@@ -28,7 +28,7 @@
 	}
 	if ($mins >= 1 && $secs >= 1) {
 		$uptimeA .= " and ";
-	} else {
+	} elseif ($mins >= 1) {
 		$uptimeA .= ".";
 	}
 	if ($secs >= 2) {
@@ -38,7 +38,7 @@
 	}
 
 	if (checkC("all", "!ping")) {
-		echo "==> !ping :".$uptime." (".$C_ping_n.")\n";
+		echo "=> !ping :".$uptime." (".$C_ping_n.")\n";
 		if ($C_ping_n >= 15) {
 			fwrite($sock, "PRIVMSG ".$channel." :running for ".$uptimeA."\n");
 			$C_ping_t = time();
