@@ -4,9 +4,9 @@
 		$killed = array();
 		$lastKill = null;
 	}
-	
-	$nokill = file($pathIs."/nokill.txt");
-	
+
+	$nokill = file($pathIs."/nokill.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
 	$C_kill_n = time() - $C_kill_t;
 	if (checkC("all", "!kill") && $lastKill != $MSfrom."-".$varsIN[1]) {
 		if ($varsIN[1] == "list") {

@@ -9,7 +9,7 @@
 			$showS		= show status y/nSuccessful
 			$isMod		= is the bot mods
 			$channel	= where the bot should be
-			
+
 			$MSfrom		= send from
 			$varsIN		= array message
 	*/
@@ -22,19 +22,8 @@
 	$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
 	$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 	include $pathIs."/config.php";
-	# Check if bot is mod in chat
-	$cAPI = ltrim($channel, '#');
-	$cAPIChat = json_decode(file_get_contents("http://tmi.twitch.tv/group/user/".$cAPI."/chatters"));
-	$isMod = false;
-	$modInChat = $cAPIChat->chatters->moderators;
-	foreach ($modInChat as $modInChat) {
-		if ($modInChat == $nick) {
-			$isMod = true;
-			break;
-		}
-	}
-	
 	include $pathIs."/lib.php";
+	$isMod = checkIfMod($channel, $nick);
 
 	$sock = fsockopen($server, $port, $errno, $errstr, 30);
 	if (!$sock) {
@@ -58,13 +47,18 @@
 		$startTime = time();
 		while(true) {
 			$timeoutA = 0;
+      $tick = 0;
 			while($data = fgets($sock, 128)) {
-				
+
 				// Update lists
-				$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
-				$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
-				$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
-				
+        if (checkC("admin", "!update") || $tick % 60 == 0  || $tick == 0) {
+					echo "=> !update -> Done\n";
+			    $coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
+			    $isMod = checkIfMod($channel, $nick);
+					$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
+					$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
+        }
+
 				// Commands
 				$dataE = "<START>".nl2br($data);
 				$genVars = explode(".".$host." PRIVMSG ".$channel." :", $dataE);
@@ -84,6 +78,7 @@
 				if($exData[0] == "PING") {
 					fwrite($sock, "PONG ".$exData[1]."\n");
 				}
+        $tick++;
 			}
 		}
 	} else {
