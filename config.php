@@ -5,7 +5,6 @@
 	$port 	= '6667';
 	$admin 	= '';
 	$showS 	= false;
-	$isMod 	= false;
 	$channel= '#';
 	$name  	= '';
 	$nick   = '';

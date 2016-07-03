@@ -22,6 +22,18 @@
 	$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
 	$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 	include $pathIs."/config.php";
+	# Check if bot is mod in chat
+	$cAPI = ltrim($channel, '#');
+	$cAPIChat = json_decode(file_get_contents("http://tmi.twitch.tv/group/user/".$cAPI."/chatters"));
+	$isMod = false;
+	$modInChat = $cAPIChat->chatters->moderators;
+	foreach ($modInChat as $modInChat) {
+		if ($modInChat == $nick) {
+			$isMod = true;
+			break;
+		}
+	}
+	
 	include $pathIs."/lib.php";
 
 	$sock = fsockopen($server, $port, $errno, $errstr, 30);
