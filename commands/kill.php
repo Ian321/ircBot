@@ -5,6 +5,8 @@
 		$lastKill = null;
 	}
 	
+	$nokill = file($pathIs."/nokill.txt");
+	
 	$C_kill_n = time() - $C_kill_t;
 	if (checkC("all", "!kill") && $lastKill != $MSfrom."-".$varsIN[1]) {
 		if ($varsIN[1] == "list") {
@@ -23,6 +25,8 @@
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't kill links OMGScoots\n");
 		} elseif (strlen($varsIN[1]) > 25) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", this string is too long OMGScoots\n");
+		} elseif (in_array(strtolower($varsIN[1]), $nokill)) {
+			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't kill a god pajaDank\n");
 		} else {
 			echo "=> !kill ".$MSfrom." -> ".$varsIN[1]." (".$C_kill_n.")\n";
 			if (!in_array(strtolower($MSfrom), $killed)) {
