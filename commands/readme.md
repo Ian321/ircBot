@@ -3,3 +3,4 @@
 - !kill
 - !php
 - !xD
+- !sgdq
