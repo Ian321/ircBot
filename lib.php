@@ -20,7 +20,6 @@
 						return true;
 					}
 				}
-
 			case "admin":
 				if (strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$command.'<br />') !== false || strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$command.' ') !== false) {
 					return true;
