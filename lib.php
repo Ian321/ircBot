@@ -78,4 +78,18 @@
 		$curGame = nl2br($cAPIGame->stream->channel->game);
 		return $curGame;
 	}
+	function updateList(){
+    global $coms;
+    global $pathIs;
+    global $isMod;
+    global $mods;
+    global $channel;
+    global $nick;
+    global $blacklist;
+		echo "=> !update -> Done\n";
+		$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
+		$isMod = checkIfMod($channel, $nick);
+		$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
+		$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
+	}
 ?>

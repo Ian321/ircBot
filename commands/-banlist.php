@@ -9,6 +9,7 @@
 			unset($blacklist[$key]);
 		}
 		file_put_contents($pathIs.'/blacklist.txt', implode("\n", $blacklist)."\n");
+		updateList();
 		if ($showS) {
 			fwrite($sock, "PRIVMSG ".$channel." :Removed \"".$stringB."\" from the blacklist.\n");
 		}

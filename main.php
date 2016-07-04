@@ -18,12 +18,9 @@
 	ini_set('display_errors', 'on');
 
 	$pathIs = realpath(dirname(__FILE__));
-	$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
-	$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
-	$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 	include $pathIs."/config.php";
 	include $pathIs."/lib.php";
-	$isMod = checkIfMod($channel, $nick);
+	updateList();
 
 	$sock = fsockopen($server, $port, $errno, $errstr, 30);
 	if (!$sock) {
@@ -47,16 +44,12 @@
 		$startTime = time();
 		while(true) {
 			$timeoutA = 0;
-      $tick = 0;
+      $tick = 1;
 			while($data = fgets($sock, 128)) {
 
 				// Update lists
-        if (checkC("admin", "!update") || $tick % 60 == 0  || $tick == 0) {
-					echo "=> !update -> Done\n";
-			    $coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
-			    $isMod = checkIfMod($channel, $nick);
-					$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
-					$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
+        if (checkC("admin", "!update") || $tick % 60 == 0) {
+					updateList();
         }
 
 				// Commands

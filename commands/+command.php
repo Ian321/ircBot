@@ -27,6 +27,7 @@
 			fwrite($newCF, $newCT);
 			fclose($newCF);
 			echo "=> Added command ".$sendVar1."\n";
+			updateList();
 			if ($showS) {
 				fwrite($sock, "PRIVMSG ".$channel." :Added command ".$sendVar1."\n");
 			}

@@ -3,7 +3,7 @@
 		$C_hug_t = 0;
 		$LastHug = null;
 	}
-	
+
 	$C_hug_n = time() - $C_hug_t;
 	if (checkC("all", "!hug") && ($C_hug_t >= 30 || $LastHug != $MSfrom."-".$varsIN[1])) {
 		if (strpos($varsIN[1], '.') !== false) {
