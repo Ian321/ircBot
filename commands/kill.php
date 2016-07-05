@@ -31,7 +31,7 @@
 			echo "=> !kill ".$MSfrom." -> ".$varsIN[1]." (".$C_kill_n.")\n";
 			if (!in_array(strtolower($MSfrom), $killed)) {
 				if ($C_xd_n >= 15 && !in_array(strtolower($varsIN[1]), $killed)) {
-					if ($varsIN[1] == $MSfrom) {
+					if (strtolower($varsIN[1]) == strtolower($MSfrom)) {
 						fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", killed himself FeelsBadMan\n");
 					} else {
 						fwrite($sock, "PRIVMSG ".$channel." :pajaDank ︻╦╤─ ".$varsIN[1]."\n");
@@ -45,7 +45,7 @@
 					fwrite($sock, "PRIVMSG ".$channel." :&#65279; ".$varsIN[1]." is already dead.\n");
 				}
 			} else {
-				if ($varsIN[1] == $MSfrom) {
+				if (strtolower($varsIN[1]) == strtolower($MSfrom)) {
 					fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you are already dead FeelsBadMan\n");
 				} else {
 					fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", dead people can't kill others OMGScoots\n");
