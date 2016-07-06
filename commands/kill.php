@@ -9,6 +9,9 @@
 
 	$C_kill_n = time() - $C_kill_t;
 	if (checkC("all", "!kill") && $lastKill != $MSfrom."-".$varsIN[1]) {
+		if (substr($varsIN[1], 0, 1) === '@') {
+			$varsIN[1] = ltrim($varsIN[1], '@');
+		}
 		if ($varsIN[1] == "list") {
 			echo "=> List of dead people:\n";
 			echo var_dump($killed);
@@ -32,7 +35,7 @@
 			if (!in_array(strtolower($MSfrom), $killed)) {
 				if ($C_xd_n >= 15 && !in_array(strtolower($varsIN[1]), $killed)) {
 					if (strtolower($varsIN[1]) == strtolower($MSfrom)) {
-						fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", killed himself FeelsBadMan\n");
+						fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom." killed himself FeelsBadMan\n");
 					} else {
 						fwrite($sock, "PRIVMSG ".$channel." :pajaDank ︻╦╤─ ".$varsIN[1]."\n");
 					}
@@ -60,7 +63,7 @@
 			if ($isMod) {
 				fwrite($sock, "PRIVMSG ".$channel." :.timeout ".$MSfrom." 3\n");
 			}
-			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", killed himself FeelsBadMan\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom." killed himself FeelsBadMan\n");
 		} else {
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you are already dead FeelsBadMan\n");
 		}
