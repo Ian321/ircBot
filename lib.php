@@ -9,19 +9,20 @@
 		global $host;
 		global $MSfrom;
 		global $channel;
+		global $trigger;
 		switch($who) {
 			case "all":
-				if (strpos($dataE, $channel.' :'.$command.'<br />') !== false || strpos($dataE, $channel.' :'.$command.' ') !== false) {
+				if (strpos($dataE, $channel.' :'.$trigger.$command.'<br />') !== false || strpos($dataE, $channel.' :'.$trigger.$command.' ') !== false) {
 					return true;
 				}
 			case "mods":
 				foreach ($mods as $mod) {
-					if (strpos($dataE, $mod."@".$mod.".".$host." PRIVMSG ".$channel.' :'.$command.'<br />') !== false || strpos($dataE, $mod."@".$mod.".".$host." PRIVMSG ".$channel.' :'.$command.' ') !== false) {
+					if (strpos($dataE, $mod."@".$mod.".".$host." PRIVMSG ".$channel.' :'.$trigger.$command.'<br />') !== false || strpos($dataE, $mod."@".$mod.".".$host." PRIVMSG ".$channel.' :'.$trigger.$command.' ') !== false) {
 						return true;
 					}
 				}
 			case "admin":
-				if (strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$command.'<br />') !== false || strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$command.' ') !== false) {
+				if (strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$trigger.$command.'<br />') !== false || strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$trigger.$command.' ') !== false) {
 					return true;
 				}
 			case "none":

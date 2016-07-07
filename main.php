@@ -48,7 +48,7 @@
 			while($data = fgets($sock, 128)) {
 
 				// Update lists
-        if (checkC("admin", "!update") || $tick % 60 == 0) {
+        if (checkC("admin", "update") || $tick % 60 == 0) {
 					updateList();
         }
 

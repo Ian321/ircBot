@@ -4,7 +4,7 @@
 	}
 	$C_mods_n = time() - $C_mods_t;
 
-	if (checkC("all", "!mods")) {
+	if (checkC("all", "mods")) {
 		echo "=> MODS (".$C_mods_n.")\n";
 		if ($C_mods_n >= 15) {
 			echo var_dump($mods);

@@ -4,6 +4,8 @@
 	// :<USERNAME>!<USERNAME>@<USERNAME>.<HOST> PRIVMSG <CHANNEL> :<MS>
 	$port 	= '6667';
 	$admin 	= '';
+	$trigger= '!';
+	// Don't use ':' !!!
 	$showS 	= false;
 	$channel= '#';
 	$name  	= '';

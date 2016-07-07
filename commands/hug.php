@@ -5,7 +5,7 @@
 	}
 
 	$C_hug_n = time() - $C_hug_t;
-	if (checkC("all", "!hug") && ($C_hug_t >= 30 || $LastHug != $MSfrom."-".$varsIN[1])) {
+	if (checkC("all", "hug") && ($C_hug_t >= 30 || $LastHug != $MSfrom."-".$varsIN[1])) {
 		if (strpos($varsIN[1], '.') !== false) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't hug links OMGScoots\n");
 		} elseif (strlen($varsIN[1]) > 25) {

@@ -1,5 +1,5 @@
 <?php
-	if (checkC("admin", "!+command")) {
+	if (checkC("admin", "+command")) {
 		$sendVarX = explode("<br", explode("PRIVMSG ".$channel." :!+command ", $dataE)[1])[0];
 		$sendVar1 = explode(", ", $sendVarX)[0];
 		$sendVar2 = explode(", ", $sendVarX)[1];

@@ -1,5 +1,5 @@
 <?php
-	if (checkC("admin", "!-mod")) {
+	if (checkC("admin", "-mod")) {
 		$varsIN[1] = strtolower($varsIN[1]);
 		echo "=> Removed mod: ".$varsIN[1]."\n";
 		if(($key = array_search($varsIN[1], $mods)) !== false) {

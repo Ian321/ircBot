@@ -1,5 +1,5 @@
 <?php
-	if (checkC("admin", "!-banlist")) {
+	if (checkC("admin", "-banlist")) {
 		$varsIN0 = $varsIN[0];
 		unset($varsIN[0]);
 		$stringB = implode(" ", $varsIN);
