@@ -1,7 +1,7 @@
 <?php
 	function checkC($who, $command) {
 		/*
-			Use : if(checkC("all", "!xD")){ }
+			Use : if(checkC("all", "xD")){ }
 		*/
 		global $dataE;
 		global $admin;
