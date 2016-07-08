@@ -16,7 +16,7 @@
 			echo "=> List of dead people:\n";
 			echo var_dump($killed);
 			fwrite($sock, "PRIVMSG ".$channel." :.w ".$MSfrom." Dead people: ".implode(", ", $killed)."\n");
-		} elseif ($varsIN[1] == "clear" && checkC("admin", "!kill")) {
+		} elseif ($varsIN[1] == "clear" && checkC("admin", "kill")) {
 			$killed = array();
 			echo "=> !kill -> clear \n";
 			if ($showS) {
