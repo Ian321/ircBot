@@ -1,18 +1,4 @@
 <?php
-	/*
-		List of usable variables:
-			$pathIs 	= location of main.php
-			$mods 		= array of mods
-			$blacklist	= array of blacklisted lines
-			$coms		= array of commands
-			$admin		= string of admin
-			$showS		= show status y/nSuccessful
-			$isMod		= is the bot mods
-			$channel	= where the bot should be
-
-			$MSfrom		= send from
-			$varsIN		= array message
-	*/
 	error_reporting(E_ALL & ~E_NOTICE);
 	set_time_limit(0);
 	ini_set('display_errors', 'on');

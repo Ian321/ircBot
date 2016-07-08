@@ -4,8 +4,10 @@
 	// :<USERNAME>!<USERNAME>@<USERNAME>.<HOST> PRIVMSG <CHANNEL> :<MS>
 	$port 	= '6667';
 	$admin 	= '';
-	$trigger= '!';
-	// Don't use ':' !!!
+	$triggerD = '!';
+	$triggerE = array(
+	//	'ping' => '*',
+	);
 	$showS 	= false;
 	$channel= '#';
 	$name  	= '';

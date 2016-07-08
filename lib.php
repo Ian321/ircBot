@@ -9,7 +9,13 @@
 		global $host;
 		global $MSfrom;
 		global $channel;
-		global $trigger;
+		global $triggerD;
+		global $triggerE;
+		if (isset($triggerE[$command]) && !empty($triggerE[$command])) {
+			$trigger = $triggerE[$command];
+		} else {
+			$trigger = $triggerD;
+		}
 		switch($who) {
 			case "all":
 				if (strpos($dataE, $channel.' :'.$trigger.$command.'<br />') !== false || strpos($dataE, $channel.' :'.$trigger.$command.' ') !== false) {
