@@ -8,7 +8,7 @@
 	$nokill = file($pathIs."/nokill.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 	$C_kill_n = time() - $C_kill_t;
-	if ((checkC("all", "kill") || checkC("all", "kys")) && $lastKill != $MSfrom."-".$varsIN[1]) {
+	if ((checkC("all", "kill") && $lastKill != $MSfrom."-".$varsIN[1]) {
 		if (substr($varsIN[1], 0, 1) === '@') {
 			$varsIN[1] = ltrim($varsIN[1], '@');
 		}
