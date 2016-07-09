@@ -26,6 +26,7 @@
 		if ($showS) {
 			fwrite($sock, "PRIVMSG ".$channel." :Up and running pajaHop\n");
 		}
+		unlink($pathIs."/log.txt");
 		echo "=> RUNNING\n";
 		$startTime = time();
 		while(true) {
@@ -47,7 +48,12 @@
 					include $file;
 				}
 
-				echo $data;
+				if (isset($MSfrom) && !empty($MSfrom)) {
+					file_put_contents($pathIs.'/log.txt', $MSfrom.": ".implode(" ", $varsIN)."\n", FILE_APPEND);
+					echo $MSfrom.": ".implode(" ", $varsIN)."\n";
+				} else {
+					echo $data;
+				}
 				flush();
 
 				// Separate all data

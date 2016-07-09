@@ -8,7 +8,7 @@
 	$nokill = file($pathIs."/nokill.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 	$C_kill_n = time() - $C_kill_t;
-	if (checkC("all", "kill") && $lastKill != $MSfrom."-".$varsIN[1]) {
+	if ((checkC("all", "kill") || checkC("all", "kys")) && $lastKill != $MSfrom."-".$varsIN[1]) {
 		if (substr($varsIN[1], 0, 1) === '@') {
 			$varsIN[1] = ltrim($varsIN[1], '@');
 		}
@@ -30,7 +30,7 @@
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", this string is too long OMGScoots\n");
 		} elseif (in_array(strtolower($varsIN[1]), $nokill)) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't kill a god pajaDank\n");
-		} else {
+		} elseif (isset($varsIN[1]) && !empty($varsIN[1])) {
 			echo "=> !kill ".$MSfrom." -> ".$varsIN[1]." (".$C_kill_n.")\n";
 			if (!in_array(strtolower($MSfrom), $killed)) {
 				if ($C_xd_n >= 15 && !in_array(strtolower($varsIN[1]), $killed)) {
@@ -57,7 +57,7 @@
 		}
 		$lastKill = $MSfrom."-".$varsIN[1];
 	}
-	if (checkC("all", "kys")) {
+	if (checkC("all", "kms")) {
 		if (!in_array(strtolower($MSfrom), $killed)) {
 			array_push($killed, strtolower($MSfrom));
 			if ($isMod) {
