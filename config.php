@@ -6,7 +6,7 @@
 	$admin 	= '';
 	$triggerD = '!';
 	$triggerE = array(
-	//	'ping' => '*',
+	#	'ping' => '*',
 	);
 	$showS 	= false;
 	$channel= '#';
