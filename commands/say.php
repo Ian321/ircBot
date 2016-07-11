@@ -1,10 +1,10 @@
 <?php
 	if (checkC("admin", "say")) {
-		$varsIN0 = $varsIN[0];
-		unset($varsIN[0]);
-		$stringA = implode(" ", $varsIN);
-		$varsIN[0] = $varsIN0;
-		echo "=> !say -> ".$stringA."\n";
+		$tempVar0 = explode(" ", $C_Message);
+		$tempVar1 = $C_Message[0];
+		unset($tempVar0[0]);
+		$stringA = implode(" ", $tempVar0);
+		echo "\n=> !say -> ".$stringA;
 		fwrite($sock, "PRIVMSG ".$channel." :".$stringA."\n");
 	}
 ?>

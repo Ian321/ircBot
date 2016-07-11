@@ -17,7 +17,7 @@
 			$newCT .='$C_'.$varsIN[1].'_n = time() - $C_'.$varsIN[1].'_t;'.PHP_EOL;
 			$newCT .=''.PHP_EOL;
 			$newCT .='if (checkC("all", "'.$varsIN[1].'")) {'.PHP_EOL;
-			$newCT .='echo "=> !'.$varsIN[1].' (".$C_'.$varsIN[1].'_n.")\n";'.PHP_EOL;
+			$newCT .='echo "\n=> !'.$varsIN[1].' (".$C_'.$varsIN[1].'_n.")";'.PHP_EOL;
 			$newCT .='if ($C_'.$varsIN[1].'_a && $C_'.$varsIN[1].'_n >= 15) {'.PHP_EOL;
 			$newCT .='fwrite($sock, "PRIVMSG ".$channel." :'.$stringB.'\n");'.PHP_EOL;
 			$newCT .='$C_'.$varsIN[1].'_t = time();'.PHP_EOL;
@@ -30,16 +30,10 @@
 			$newCT .='?>'.PHP_EOL;
 			fwrite($newCF, $newCT);
 			fclose($newCF);
-			echo "=> Added command ".$varsIN[1]."\n";
+			echo "\n=> Added command ".$varsIN[1];
 			updateList();
-			if ($showS) {
-				fwrite($sock, "PRIVMSG ".$channel." :Added command ".$varsIN[1]."\n");
-			}
 		} else {
-			echo "=> File ".$varsIN[1].".php already exist in /commands/.\n";
-			if ($showS) {
-				fwrite($sock, "PRIVMSG ".$channel." :Command ".$varsIN[1]." already exist\n");
-			}
+			echo "\n=> File ".$varsIN[1].".php already exist in /commands/.";
 		}
 	}
 ?>

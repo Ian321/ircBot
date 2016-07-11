@@ -8,34 +8,31 @@
 	$nokill = file($pathIs."/nokill.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 	$C_kill_n = time() - $C_kill_t;
-	if (checkC("all", "kill") && $lastKill != $MSfrom."-".$varsIN[1]) {
+	if (checkC("all", "kill") && $lastKill != $C_User."-".$varsIN[1]) {
 		if (substr($varsIN[1], 0, 1) === '@') {
 			$varsIN[1] = ltrim($varsIN[1], '@');
 		}
 		if ($varsIN[1] == "list") {
-			echo "=> List of dead people:\n";
+			echo "\n=> List of dead people:";
 			echo var_dump($killed);
-			fwrite($sock, "PRIVMSG ".$channel." :.w ".$MSfrom." Dead people: ".implode(", ", $killed)."\n");
+			fwrite($sock, "PRIVMSG ".$channel." :.w ".$C_User." Dead people: ".implode(", ", $killed)."\n");
 		} elseif ($varsIN[1] == "clear" && checkC("admin", "kill")) {
 			$killed = array();
-			echo "=> !kill -> clear \n";
-			if ($showS) {
-				fwrite($sock, "PRIVMSG ".$channel." :Cleared the list.\n");
-			}
+			echo "\n=> !kill -> clear";
 		} elseif ($varsIN[1] == "clear") {
-			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't clear the list OMGScoots\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you can't clear the list OMGScoots\n");
 		} elseif (strpos($varsIN[1], '.') !== false) {
-			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't kill links OMGScoots\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you can't kill links OMGScoots\n");
 		} elseif (strlen($varsIN[1]) > 25) {
-			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", this string is too long OMGScoots\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", this string is too long OMGScoots\n");
 		} elseif (in_array(strtolower($varsIN[1]), $nokill)) {
-			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you can't kill a god pajaDank\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you can't kill a god pajaDank\n");
 		} elseif (isset($varsIN[1]) && !empty($varsIN[1])) {
-			echo "=> !kill ".$MSfrom." -> ".$varsIN[1]." (".$C_kill_n.")\n";
-			if (!in_array(strtolower($MSfrom), $killed)) {
+			echo "\n=> !kill ".$C_User." -> ".$varsIN[1]." (".$C_kill_n.")";
+			if (!in_array(strtolower($C_User), $killed)) {
 				if ($C_xd_n >= 15 && !in_array(strtolower($varsIN[1]), $killed)) {
-					if (strtolower($varsIN[1]) == strtolower($MSfrom)) {
-						fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom." killed himself FeelsBadMan\n");
+					if (strtolower($varsIN[1]) == strtolower($C_User)) {
+						fwrite($sock, "PRIVMSG ".$channel." :".$C_User." killed himself FeelsBadMan\n");
 					} else {
 						fwrite($sock, "PRIVMSG ".$channel." :pajaDank ︻╦╤─ ".$varsIN[1]."\n");
 					}
@@ -48,24 +45,24 @@
 					fwrite($sock, "PRIVMSG ".$channel." :&#65279; ".$varsIN[1]." is already dead.\n");
 				}
 			} else {
-				if (strtolower($varsIN[1]) == strtolower($MSfrom)) {
-					fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you are already dead FeelsBadMan\n");
+				if (strtolower($varsIN[1]) == strtolower($C_User)) {
+					fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you are already dead FeelsBadMan\n");
 				} else {
-					fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", dead people can't kill others OMGScoots\n");
+					fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", dead people can't kill others OMGScoots\n");
 				}
 			}
 		}
-		$lastKill = $MSfrom."-".$varsIN[1];
+		$lastKill = $C_User."-".$varsIN[1];
 	}
 	if (checkC("all", "kms")) {
-		if (!in_array(strtolower($MSfrom), $killed)) {
-			array_push($killed, strtolower($MSfrom));
+		if (!in_array(strtolower($C_User), $killed)) {
+			array_push($killed, strtolower($C_User));
 			if ($isMod) {
-				fwrite($sock, "PRIVMSG ".$channel." :.timeout ".$MSfrom." 3\n");
+				fwrite($sock, "PRIVMSG ".$channel." :.timeout ".$C_User." 3\n");
 			}
-			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom." killed himself FeelsBadMan\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User." killed himself FeelsBadMan\n");
 		} else {
-			fwrite($sock, "PRIVMSG ".$channel." :".$MSfrom.", you are already dead FeelsBadMan\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you are already dead FeelsBadMan\n");
 		}
 	}
 ?>

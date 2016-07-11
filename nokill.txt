@@ -1,1 +1,2 @@
-"list of chatters that can't be killed by !kill"
+ian678
+swordakimbo

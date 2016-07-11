@@ -6,7 +6,7 @@
 	$C_php_n = time() - $C_php_t;
 
 	if (checkC("all", "php")) {
-		echo "=> !php (".$C_php_n.")\n";
+		echo "\n=> !php (".$C_php_n.")";
 		if ($C_php_a && $C_php_n >= 15) {
 			fwrite($sock, "PRIVMSG ".$channel." :I run on php pajaHop\n");
 			$C_php_t = time();

@@ -3,12 +3,10 @@
 		/*
 			Use : if(checkC("all", "xD")){ }
 		*/
-		global $dataE;
 		global $admin;
 		global $mods;
-		global $host;
-		global $MSfrom;
-		global $channel;
+		global $C_User;
+		global $C_Message;
 		global $triggerD;
 		global $triggerE;
 		if (isset($triggerE[$command]) && !empty($triggerE[$command])) {
@@ -18,17 +16,17 @@
 		}
 		switch($who) {
 			case "all":
-				if (strpos($dataE, $channel.' :'.$trigger.$command.'<br />') !== false || strpos($dataE, $channel.' :'.$trigger.$command.' ') !== false) {
+				if (explode(" ", trim($C_Message))[0] == $trigger.$command) {
 					return true;
 				}
 			case "mods":
 				foreach ($mods as $mod) {
-					if (strpos($dataE, $mod."@".$mod.".".$host." PRIVMSG ".$channel.' :'.$trigger.$command.'<br />') !== false || strpos($dataE, $mod."@".$mod.".".$host." PRIVMSG ".$channel.' :'.$trigger.$command.' ') !== false) {
+					if (explode(" ", trim($C_Message))[0] == $trigger.$command && strtolower($C_User) == strtolower($mod)) {
 						return true;
 					}
 				}
 			case "admin":
-				if (strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$trigger.$command.'<br />') !== false || strpos($dataE, $admin."@".$admin.".".$host." PRIVMSG ".$channel.' :'.$trigger.$command.' ') !== false) {
+				if (explode(" ", trim($C_Message))[0] == $trigger.$command && strtolower($C_User) == strtolower($admin)) {
 					return true;
 				}
 			case "none":
@@ -92,11 +90,9 @@
     global $mods;
     global $channel;
     global $nick;
-    global $blacklist;
-		echo "=> !update -> Done\n";
+		echo "\n=> !update -> Done";
 		$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
 		$isMod = checkIfMod($channel, $nick);
 		$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
-		$blacklist= file($pathIs.'/blacklist.txt', FILE_IGNORE_NEW_LINES);
 	}
 ?>

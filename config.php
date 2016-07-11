@@ -8,7 +8,6 @@
 	$triggerE = array(
 	#	'ping' => '*',
 	);
-	$showS 	= false;
 	$channel= '#';
 	$name  	= '';
 	$nick   = '';
