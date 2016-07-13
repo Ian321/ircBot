@@ -1,9 +1,9 @@
 <?php
 	if (checkC("admin", "say")) {
-		$tempVar0 = explode(" ", $C_Message);
-		$tempVar1 = $C_Message[0];
-		unset($tempVar0[0]);
-		$stringA = implode(" ", $tempVar0);
+		$tempVar1 = $varsIN[0];
+		unset($varsIN[0]);
+		$stringA = implode(" ", $varsIN);
+		$varsIN[0] = $tempVar1;
 		echo "\n=> !say -> ".$stringA;
 		fwrite($sock, "PRIVMSG ".$channel." :".$stringA."\n");
 	}

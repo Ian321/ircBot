@@ -1,8 +1,5 @@
 <?php
-	function checkC($who, $command) {
-		/*
-			Use : if(checkC("all", "xD")){ }
-		*/
+	function checkC ($who, $command) {
 		global $admin;
 		global $mods;
 		global $C_User;
@@ -38,35 +35,34 @@
 		$hours = floor($sec / 3600);
 		$mins = floor($sec / 60 % 60);
 		$secs = floor($sec % 60);
-		$timeleftA = " ";
+		$time = " ";
 
 		if ($hours >= 2) {
-			$timeleftA .= $hours." hours";
+			$time .= $hours." hours";
 		} elseif ($hours >= 1) {
-			$timeleftA .= $hours." hour";
+			$time .= $hours." hour";
 		}
 		if ($hours >= 1 && $mins >= 1 && $secs >= 1) {
-			$timeleftA .= ", ";
+			$time .= ", ";
 		} elseif ($hours >= 1 && ($mins >= 1 || $secs >= 1)) {
-			$timeleftA .= " and ";
+			$time .= " and ";
 		}
 		if ($mins >= 2) {
-			$timeleftA .= $mins." minutes";
+			$time .= $mins." minutes";
 		} elseif ($mins >= 1) {
-			$timeleftA .= $mins." minute";
+			$time .= $mins." minute";
 		}
 		if ($mins >= 1 && $secs >= 1) {
-			$timeleftA .= " and ";
+			$time .= " and ";
 		}
 		if ($secs >= 2) {
-			$timeleftA .= $secs." seconds";
+			$time .= $secs." seconds";
 		} elseif ($secs >= 1) {
-			$timeleftA .= $secs." second";
+			$time .= $secs." second";
 		}
-		return $timeleftA;
+		return $time;
 	}
-	function checkIfMod($channel, $nick) {
-		# Check if bot is mod in chat
+	function checkIfMod ($channel, $nick) {
 		$cAPI = ltrim($channel, '#');
 		$cAPIChat = json_decode(file_get_contents("http://tmi.twitch.tv/group/user/".$cAPI."/chatters"));
 		$modInChat = $cAPIChat->chatters->moderators;
@@ -78,21 +74,32 @@
 		return false;
 		}
 	}
-	function checkCurrentGame($channel) {
+	function checkCurrentGame ($channel) {
 		$cAPIGame = json_decode(file_get_contents('https://api.twitch.tv/kraken/streams/'.$channel));
 		$curGame = nl2br($cAPIGame->stream->channel->game);
 		return $curGame;
 	}
-	function updateList(){
+	function updateList (){
     global $coms;
     global $pathIs;
     global $isMod;
     global $mods;
     global $channel;
     global $nick;
+		global $isTwitch;
+		if (!file_exists($pathIs."/mods.txt")) {
+			touch($pathIs."/mods.txt");
+		}
+		if (!file_exists($pathIs."/nokill.txt")) {
+			touch($pathIs."/nokill.txt");
+		}
 		echo "\n=> !update -> Done";
 		$coms	= glob($pathIs.'/commands/*.{php}', GLOB_BRACE);
-		$isMod = checkIfMod($channel, $nick);
+		if ($isTwitch) {
+			$isMod = checkIfMod($channel, $nick);
+		} else {
+			$isMod = false;
+		}
 		$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
 	}
 ?>

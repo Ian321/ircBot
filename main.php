@@ -4,6 +4,11 @@
 
 	$pathIs = realpath(dirname(__FILE__));
 	include $pathIs."/config.php";
+	if ($server != 'irc.twitch.tv') {
+		$isTwitch = false;
+	} else {
+		$isTwitch = true;
+	}
 	include $pathIs."/lib.php";
 	updateList();
 
@@ -41,7 +46,6 @@
 					$varsIN = explode(" ", $C_Message);
 
 					#
-					// Update lists
 	        if (checkC("admin", "update") || $tick % 60 == 0) {
 						updateList();
 	        }
