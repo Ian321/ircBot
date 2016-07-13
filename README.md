@@ -33,7 +33,7 @@ The configuration is very simple:
 
 | Function               | What it does | Twitch only? |
 |------------------------|--------------|:------------:|
-| checkC ($who, $command)| $who can be: none, admin, mods or all.<br>  $command it what the function should look for.<br> e.g: checkC("mod", "xyz") will return **true** if a mod or admin writes "!xyz".| No |
+| checkC ($who, $command)| $who can be: none, admin, mods or all.<br>  $command it what the function should look for.<br> checkC("mod", "xyz") will return **true** if a mod or admin writes "!xyz".| No |
 | secondsToTimeString ($sec) | Will return a string like this one:<br> secondsToTimeString (7246) -> "2 hours and 46 seconds"| No |
 | checkIfMod ($channel, $nick) | Will return **true** if the $nick is mod in the $channel. | Yes |
 | checkCurrentGame ($channel)  | Will return the current game of $channel. | Yes |
