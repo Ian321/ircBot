@@ -6,6 +6,9 @@
 
 	$C_hug_n = time() - $C_hug_t;
 	if (checkC("all", "hug") && ($C_hug_t >= 30 || $LastHug != $C_User."-".$varsIN[1])) {
+		if (substr($varsIN[1], 0, 1) === '@') {
+			$varsIN[1] = ltrim($varsIN[1], '@');
+		}
 		if (strpos($varsIN[1], '.') !== false) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you can't hug links OMGScoots\n");
 		} elseif (strlen($varsIN[1]) > 25) {
