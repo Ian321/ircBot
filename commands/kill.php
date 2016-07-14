@@ -32,7 +32,7 @@
 			if (!in_array(strtolower($C_User), $killed)) {
 				if ($C_xd_n >= 15 && !in_array(strtolower($varsIN[1]), $killed)) {
 					if (strtolower($varsIN[1]) == strtolower($C_User)) {
-						fwrite($sock, "PRIVMSG ".$channel." :".$C_User." killed himself FeelsBadMan\n");
+						fwrite($sock, "PRIVMSG ".$channel." :".$C_User." killed themself FeelsBadMan\n");
 					} else {
 						fwrite($sock, "PRIVMSG ".$channel." :pajaDank ︻╦╤─ ".$varsIN[1]."\n");
 					}
@@ -60,7 +60,7 @@
 			if ($isMod) {
 				fwrite($sock, "PRIVMSG ".$channel." :.timeout ".$C_User." 3\n");
 			}
-			fwrite($sock, "PRIVMSG ".$channel." :".$C_User." killed himself FeelsBadMan\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User." killed themself FeelsBadMan\n");
 		} else {
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you are already dead FeelsBadMan\n");
 		}

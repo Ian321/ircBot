@@ -15,7 +15,7 @@
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", this string is too long OMGScoots\n");
 		} elseif ($varsIN[1] == $C_User) {
 			echo "\n=> !hug ".$C_User." -> ".$varsIN[1];
-			fwrite($sock, "PRIVMSG ".$channel." :".$C_User." hugs himself FeelsBadMan\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User." hugs themself FeelsBadMan\n");
 			$LastHug = $C_User."-".$varsIN[1];
 			$C_hug_t = time();
 		} else {
