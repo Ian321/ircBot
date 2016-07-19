@@ -1,5 +1,5 @@
 <?php
-	if (!isset($C_ping_t)) {
+	if (!isset($C_mods_t)) {
 		$C_mods_t = 0;
 	}
 	$C_mods_n = time() - $C_mods_t;
