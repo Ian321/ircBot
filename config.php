@@ -8,6 +8,8 @@
 	$triggerE = array(
 	#	'ping' => '*',
 	);
+	$ghostMode = false;
+	// Aka no commands
 	$channel= '#';
 	$name  	= '';
 	$nick   = '';

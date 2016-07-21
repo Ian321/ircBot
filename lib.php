@@ -80,13 +80,25 @@
 		return $curGame;
 	}
 	function updateList (){
-    global $coms;
-    global $pathIs;
-    global $isMod;
-    global $mods;
-    global $channel;
-    global $nick;
+		global $coms;
+		global $pathIs;
+		global $isMod;
+		global $mods;
+		global $channel;
+		global $nick;
 		global $isTwitch;
+		global $server;
+		global $host;
+		global $port;
+		global $admin;
+		global $triggerD;
+		global $triggerE;
+		global $ghostMode;
+		global $channel;
+		global $name;
+		global $nick;
+		global $pass;
+		include $pathIs."/config.php";
 		if (!file_exists($pathIs."/mods.txt")) {
 			touch($pathIs."/mods.txt");
 		}

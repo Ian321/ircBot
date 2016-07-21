@@ -49,9 +49,11 @@
 	        if (checkC("admin", "update") || $tick % 60 == 0) {
 						updateList();
 	        }
-					foreach ($coms as $com) {
-						include $com;
-					}
+          if (!($ghostMode)) {
+  					foreach ($coms as $com) {
+  						include $com;
+  					}
+          }
 					#
 
 					if (file_exists($pathIs."/".$channel.".txt")) {
