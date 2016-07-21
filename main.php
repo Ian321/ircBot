@@ -30,7 +30,7 @@
 		echo "=> RUNNING\n";
 		$startTime = time();
 		while(true) {
-      $tick = 1;
+			$tick = 1;
 			while($data = fgets($sock, 128)) {
 				// Separate all data
 				$exData = explode(' ', $data);
@@ -46,14 +46,14 @@
 					$varsIN = explode(" ", $C_Message);
 
 					#
-	        if (checkC("admin", "update") || $tick % 60 == 0) {
-						updateList();
-	        }
-          if (!($ghostMode)) {
-  					foreach ($coms as $com) {
-  						include $com;
-  					}
-          }
+					if (checkC("admin", "update") || $tick % 60 == 0) {
+								updateList();
+					}
+					if (!($ghostMode)) {
+						foreach ($coms as $com) {
+							include $com;
+						}
+					}
 					#
 
 					if (file_exists($pathIs."/".$channel.".txt")) {
@@ -69,7 +69,7 @@
 				if($exData[0] == "PING") {
 					fwrite($sock, "PONG ".$exData[1]."\n");
 				}
-        $tick++;
+				$tick++;
 			}
 		}
 	} else {
