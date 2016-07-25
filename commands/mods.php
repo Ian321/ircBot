@@ -6,7 +6,7 @@
 
 	if (checkC("all", "mods")) {
 		echo "\n=> MODS (".$C_mods_n.")";
-		if ($C_mods_n >= 15) {
+		if ($C_mods_n >= 7) {
 			echo var_dump($mods);
 			fwrite($sock, "PRIVMSG ".$channel." :.w ".$C_User." List of ".$nick."'s mods: ".implode(", ", $mods)."\n");
 			$C_mods_t = time();

@@ -9,7 +9,7 @@
 
 	if (checkC("all", "ping")) {
 		echo "\n=> !ping :".$uptime." (".$C_ping_n.")";
-		if ($C_ping_n >= 15) {
+		if ($C_ping_n >= 5) {
 			fwrite($sock, "PRIVMSG ".$channel." :running for ".$uptimeA."\n");
 			$C_ping_t = time();
 		}

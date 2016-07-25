@@ -30,7 +30,7 @@
 		} elseif (isset($varsIN[1]) && !empty($varsIN[1])) {
 			echo "\n=> !kill ".$C_User." -> ".$varsIN[1]." (".$C_kill_n.")";
 			if (!in_array(strtolower($C_User), $killed)) {
-				if ($C_kill_n >= 15 && !in_array(strtolower($varsIN[1]), $killed)) {
+				if ($C_kill_n >= 7 && !in_array(strtolower($varsIN[1]), $killed)) {
 					if (strtolower($varsIN[1]) == strtolower($C_User)) {
 						fwrite($sock, "PRIVMSG ".$channel." :".$C_User." killed themself FeelsBadMan\n");
 					} else {
