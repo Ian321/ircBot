@@ -12,7 +12,7 @@
 			$C_php_t = time();
 			$C_php_a = false;
 		} elseif($C_php_n >= 15) {
-			fwrite($sock, "PRIVMSG ".$channel." :I run on php pajaHop &#65279;\n");
+			fwrite($sock, "PRIVMSG ".$channel." :I run on php pajaHop \n");
 			$C_php_a = true;
 		}
 	}

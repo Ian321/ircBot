@@ -23,7 +23,7 @@
 			$newCT .='$C_'.$varsIN[1].'_t = time();'.PHP_EOL;
 			$newCT .='$C_'.$varsIN[1].'_a = false;'.PHP_EOL;
 			$newCT .='} elseif($C_'.$varsIN[1].'_n >= 15) {'.PHP_EOL;
-			$newCT .='fwrite($sock, "PRIVMSG ".$channel." :'.$stringB.' &#65279;\n");'.PHP_EOL;
+			$newCT .='fwrite($sock, "PRIVMSG ".$channel." :'.$stringB.' \n");'.PHP_EOL;
 			$newCT .='$C_'.$varsIN[1].'_a = true;'.PHP_EOL;
 			$newCT .='}'.PHP_EOL;
 			$newCT .='}'.PHP_EOL;

@@ -12,7 +12,7 @@
 			$C_xd_t = time();
 			$C_xd_a = false;
 		} elseif($C_xd_n >= 15) {
-			fwrite($sock, "PRIVMSG ".$channel." :pajaSWA &#65279;\n");
+			fwrite($sock, "PRIVMSG ".$channel." :pajaSWA \n");
 			$C_xd_a = true;
 		}
 	}
