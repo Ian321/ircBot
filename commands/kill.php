@@ -27,7 +27,7 @@
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", this string is too long OMGScoots\n");
 		} elseif (in_array(strtolower($varsIN[1]), strtolower($nokill))) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you can't kill a god pajaDank\n");
-		} elseif (strpos($varsIN[1], 'untuck') !== false) {
+		} elseif (strpos($varsIN[1], '!untuck') !== false) {
 		  fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", have fun with the timeout LUL\n");
 		} elseif (isset($varsIN[1]) && !empty($varsIN[1])) {
 			echo "\n=> !kill ".$C_User." -> ".$varsIN[1]." (".$C_kill_n.")";
