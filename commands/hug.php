@@ -17,7 +17,7 @@
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", no Arabic ANELE\n");
 		} elseif ($varsIN[1] == $C_User) {
 			echo "\n=> !hug ".$C_User." -> ".$varsIN[1];
-			fwrite($sock, "PRIVMSG ".$channel." :".$C_User." hugs themself FeelsBadMan\n");
+			fwrite($sock, "PRIVMSG ".$channel." :".$C_User." hugs themselves FeelsBadMan\n");
 			$LastHug = $C_User."-".$varsIN[1];
 			$C_hug_t = time();
 		} else {
