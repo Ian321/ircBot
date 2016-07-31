@@ -5,7 +5,7 @@
 	}
 
 	$C_hug_n = time() - $C_hug_t;
-	if (checkC("all", "hug") && ($C_hug_n >= 15 || $LastHug != $C_User."-".$varsIN[1])) {
+	if (checkC("all", "hug") && isset($varsIN[1]) && !empty($varsIN[1]) && ($C_hug_n >= 15 || $LastHug != $C_User."-".$varsIN[1])) {
 		if (substr($varsIN[1], 0, 1) === '@') {
 			$varsIN[1] = ltrim($varsIN[1], '@');
 		}
