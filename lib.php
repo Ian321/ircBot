@@ -118,7 +118,7 @@
 		$s = "ثُ مَّ أَ ن زَ لَ عَ لَ يْ كُ م مِّ ن بَ عْ دِ ا لْ غَ مِّ أَ مَ نَ ةً نُّ عَ ا سً ا يَ غْ شَ ىٰ طَ ا ئِ فَ ةً مِّ ن كُ مْ";
 		$s = strtolower($s);
 		$a = explode(" ", $s);
-		if (0 < count(array_intersect(array_map('strtolower', explode(' ', e)), a))) {
+		if (0 < count(array_intersect(array_map('strtolower', explode(' ', $e)), $a))) {
 			return true;
 		} else {
 			return false;
