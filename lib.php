@@ -114,14 +114,11 @@
 		}
 		$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
 	}
-	function checkArabic ($ee) {
-		$ss = "ثُ مَّ أَ ن زَ لَ عَ لَ يْ كُ م مِّ ن بَ عْ دِ ا لْ غَ مِّ أَ مَ نَ ةً نُّ عَ ا سً ا يَ غْ شَ ىٰ طَ ا ئِ فَ ةً مِّ ن كُ مْ";
-		$ss = strtolower($ss);
-		$ar = explode(" ", $ss);
-		if (0 < count(array_intersect(array_map('strtolower', explode(' ', $ee)), $ar))) {
-			return false;
-		} else {
+	function checkValidName ($ee) {
+		if(preg_match('/[^A-Za-z0-9\-_]/', $ee)>0) {
 			return true;
+		} else {
+			return false;
 		}
 	}
 ?>
