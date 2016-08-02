@@ -114,11 +114,11 @@
 		}
 		$mods 	= file($pathIs.'/mods.txt', FILE_IGNORE_NEW_LINES);
 	}
-	function checkValidName ($ee) {
+	function isValidName ($ee) {
 		if(preg_match('/[^A-Za-z0-9\-_]/', $ee)>0) {
-			return true;
-		} else {
 			return false;
+		} else {
+			return true;
 		}
 	}
 ?>

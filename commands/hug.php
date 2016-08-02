@@ -13,7 +13,7 @@
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", you can't hug links OMGScoots\n");
 		} elseif (strlen($varsIN[1]) > 25) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", this string is too long OMGScoots\n");
-		} elseif (checkValidName($varsIN[1])) {
+		} elseif (! isValidName($varsIN[1])) {
 			fwrite($sock, "PRIVMSG ".$channel." :".$C_User.", that is not a valid username OMGScoots\n");
 		} elseif ($varsIN[1] == $C_User) {
 			echo "\n=> !hug ".$C_User." -> ".$varsIN[1];
