@@ -39,7 +39,7 @@
 					echo "\n".$dataE;
 				} elseif (!strpos($dataE, $host.' PRIVMSG '.$channel.' :') !== false && $exData[0] != "PING") {
 					file_put_contents($pathIs."/".$channel.".txt", $dataE, FILE_APPEND);
-					echo "\n".$dataE;
+					echo $dataE;
 				} elseif ($exData[0] != "PING") {
 					$C_User = explode("@", explode(".".$host." PRIVMSG ".$channel." :", $dataE)[0])[1];
 					$C_Message =  explode(".".$host." PRIVMSG ".$channel." :", $dataE)[1];
