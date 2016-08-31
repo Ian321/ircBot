@@ -4,7 +4,7 @@ This is a simple IRC-Bot made using PHP.
 Every command is a single .php file inside the commands folder.  
 
 The configuration is very simple:  
-(this example is for the twitch IRC)
+(This example is for the Twitch chat IRC)
 
 | Variable  | Value         | What it does                                      |
 |-----------|:-------------:|---------------------------------------------------|
