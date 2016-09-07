@@ -3,6 +3,7 @@
 	ini_set('display_errors', 'on');
 
 	$pathIs = realpath(dirname(__FILE__));
+	$channel= '#'.$argv[1];
 	include $pathIs."/config.php";
 	if ($server != 'irc.twitch.tv') {
 		$isTwitch = false;

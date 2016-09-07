@@ -3,6 +3,9 @@
 This is a simple IRC-Bot made using PHP.  
 Every command is a single .php file inside the commands folder.  
 
+How to use with PM2:
+pm2 start --name <process name> php -- main.php <channel name>
+
 The configuration is very simple:  
 (This example is for the Twitch chat IRC)
 
@@ -14,7 +17,6 @@ The configuration is very simple:
 | $admin    | USERNAME      | The name of the admin (you).                      |
 | $triggerD | !             | The default command trigger.                      |
 | $triggerE | 'ping' => '*',| If you want to use a different trigger for a command.|
-| $channel  | #CHANNEL      | The channel on the server.                        |
 | $name     | BOT-NAME      | The name of the bot.                              |
 | $nick     | BOT-NICK      | The nick of the bot.                              |
 | $pass     | oauth:xxxx... | The password/[outh-tocken](http://twitchapps.com/tmi/) of the bot.|

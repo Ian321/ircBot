@@ -10,7 +10,6 @@
 	);
 	$ghostMode = false;
 	// Aka no commands
-	$channel= '#';
 	$name  	= '';
 	$nick   = '';
 	$pass   = 'oauth:';
