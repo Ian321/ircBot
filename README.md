@@ -3,8 +3,8 @@
 This is a simple IRC-Bot made using PHP.  
 Every command is a single .php file inside the commands folder.  
 
-How to use with PM2:
-pm2 start --name <process name> php -- main.php <channel name>
+How to use with PM2:  
+<code>pm2 start --name <process name> php -- main.php <channel name></code>
 
 The configuration is very simple:  
 (This example is for the Twitch chat IRC)
