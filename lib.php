@@ -64,15 +64,20 @@
 	}
 	function checkIfMod ($channel, $nick) {
 		$cAPI = ltrim($channel, '#');
-		$cAPIChat = json_decode(file_get_contents("http://tmi.twitch.tv/group/user/".$cAPI."/chatters"));
-		$modInChat = $cAPIChat->chatters->moderators;
-		foreach ($modInChat as $modInChat) {
-			if ($modInChat == $nick) {
-				return true;
-				break;
+		$cAPIChat = json_decode(@file_get_contents("http://tmi.twitch.tv/group/user/".$cAPI."/chatters"));
+		if (isset($cAPIChat) && !empty($cAPIChat)) {
+			$modInChat = $cAPIChat->chatters->moderators;
+			var_dump($modInChat);
+			foreach ($modInChat as $modInChat) {
+				if ($modInChat == $nick) {
+					return true;
+					break;
+				}
 			}
-		return false;
+		} else {
+			echo "\nCouldn't connect to Twitch API!";
 		}
+		return false;
 	}
 	function checkCurrentGame ($channel) {
 		$cAPIGame = json_decode(file_get_contents('https://api.twitch.tv/kraken/streams/'.$channel));
