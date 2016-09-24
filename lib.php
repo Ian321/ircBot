@@ -67,7 +67,6 @@
 		$cAPIChat = json_decode(@file_get_contents("http://tmi.twitch.tv/group/user/".$cAPI."/chatters"));
 		if (isset($cAPIChat) && !empty($cAPIChat)) {
 			$modInChat = $cAPIChat->chatters->moderators;
-			var_dump($modInChat);
 			foreach ($modInChat as $modInChat) {
 				if ($modInChat == $nick) {
 					return true;
