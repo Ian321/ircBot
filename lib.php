@@ -32,11 +32,22 @@
 		}
 	}
 	function secondsToTimeString ($sec) {
-		$hours = floor($sec / 3600);
+		$days = floor($sec / 86400);
+		$hours= floor($sec / 3600 % 60 % 60 % 24);
 		$mins = floor($sec / 60 % 60);
 		$secs = floor($sec % 60);
-		$time = " ";
+		$time = "";
 
+		if ($days >= 2) {
+			$time .= $days." days";
+		} elseif ($days >= 1) {
+			$time .= $days." day";
+		}
+		if ($days >= 1 && (($hours >= 1 && $mins >= 1) || ($hours >= 1 && $secs >= 1) || ($mins >= 1 && $secs >= 1))) {
+			$time .= ", ";
+		} elseif ($days >= 1 && ($hours >= 1 || $mins >= 1 || $secs >= 1)) {
+			$time .= " and ";
+		}
 		if ($hours >= 2) {
 			$time .= $hours." hours";
 		} elseif ($hours >= 1) {
