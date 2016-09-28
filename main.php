@@ -1,5 +1,6 @@
 <?php
 	set_time_limit(0);
+	error_reporting(E_ALL);
 	ini_set('display_errors', 'on');
 
 	$pathIs = realpath(dirname(__FILE__));
@@ -30,9 +31,9 @@
 		sleep(1);
 		echo "=> RUNNING\n";
 		$startTime = time();
-		while(true) {
+		while($sock == true) {
 			$tick = 1;
-			while($data = fgets($sock, 128)) {
+			while(($data = fgets($sock, 128)) && $sock == true) {
 				// Separate all data
 				$exData = explode(' ', $data);
 				$dataE = trim(preg_replace('/\s+/', ' ', $data));
@@ -73,6 +74,7 @@
 				$tick++;
 			}
 		}
+		echo "\nError socket no longer open!";
 	} else {
 		echo $eS . ": " . $eN;
 	}
