@@ -14,7 +14,7 @@
 	include $pathIs."/lib.php";
 	updateList();
 
-	$sock = fsockopen($server, $port, $errno, $errstr, 30);
+	$sock = fsockopen($server, $port, $errno, $errstr);
 	if (!$sock) {
 		printf("errno: %s, errstr: %s", $errno, $errstr);
 	} else {
