@@ -31,9 +31,9 @@
 		sleep(1);
 		echo "=> RUNNING\n";
 		$startTime = time();
-		while($sock == true) {
+		while(true) {
 			$tick = 1;
-			while(($data = fgets($sock, 128)) && $sock == true) {
+			while($data = fgets($sock, 128)) {
 				// Separate all data
 				$exData = explode(' ', $data);
 				$dataE = trim(preg_replace('/\s+/', ' ', $data));
@@ -74,7 +74,6 @@
 				$tick++;
 			}
 		}
-		echo "\nError socket no longer open!";
 	} else {
 		echo $eS . ": " . $eN;
 	}
