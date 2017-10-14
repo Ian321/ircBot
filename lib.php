@@ -81,7 +81,6 @@
 			foreach ($modInChat as $modInChat) {
 				if ($modInChat == $nick) {
 					return true;
-					break;
 				}
 			}
 		} else {
