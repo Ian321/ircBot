@@ -28,7 +28,6 @@
 				}
 			case "none":
 				return false;
-				break;
 		}
 	}
 	function secondsToTimeString ($sec) {
