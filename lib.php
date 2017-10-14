@@ -28,7 +28,6 @@
 				}
 			case "none":
 				return false;
-				break;
 		}
 	}
 	function secondsToTimeString ($sec) {
@@ -81,7 +80,6 @@
 			foreach ($modInChat as $modInChat) {
 				if ($modInChat == $nick) {
 					return true;
-					break;
 				}
 			}
 		} else {
